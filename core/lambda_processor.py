@@ -1,0 +1,27 @@
+import json
+
+
+class Processor:
+    def __init__(self, first: int, second: int, operator: str):
+        self.first = first
+        self.second = second
+        self.operator = operator
+
+    def calculate(self):
+        return {
+            'statusCode': 200,
+            'body': json.dumps(self.verify_operator())
+        }
+
+    def verify_operator(self) -> json:
+        match self.operator:
+            case "+":
+                return {'result': self.first + self.second}
+            case "-":
+                return {'result': self.first - self.second}
+            case "*":
+                return {'result': self.first * self.second}
+            case "/":
+                return {'result': self.first / self.second}
+            case default:
+                raise RuntimeError("Invalid operator!")
