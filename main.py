@@ -1,12 +1,14 @@
+import json
+
 from core.lambda_processor import Processor
 
 
-def lambda_handler(event, context):
-    first_number = event["first"]
-    second_number = event["second"]
-    operator = event["operator"]
+def lambda_handler(event, context) -> json:
+    first_number: int = event["first"]
+    second_number: int = event["second"]
+    operator: str = event["operator"]
 
-    processor = Processor(first=first_number, second=second_number, operator=operator)
+    processor: json = Processor(first=first_number, second=second_number, operator=operator)
     return processor.calculate()
 
 
